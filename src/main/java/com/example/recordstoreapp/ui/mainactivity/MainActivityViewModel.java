@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumRepository;
+import com.example.recordstoreapp.model.AlbumToAdd;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return albumRepository.getMutableLiveData();
     }
 
-    public void addAlbum(Album album) {
-        albumRepository.addNewAlbum(album);
+    public void addAlbum(AlbumToAdd albumToAdd) {
+        albumRepository.addNewAlbum(albumToAdd);
     }
 }
