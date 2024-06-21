@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
+    private MainActivityClickHandler mainActivityClickHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        Log.i("before", "we're before get all here");
+
+        mainActivityClickHandler = new MainActivityClickHandler(this, mainActivityViewModel);
+        activityMainBinding.setButtonClicker(mainActivityClickHandler);
+
         getAllAlbums();
     }
 
