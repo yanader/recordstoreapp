@@ -46,20 +46,21 @@
         android:text="@={albumData.releaseDate}"
         android:hint="Release Date (yyyy-mm-dd)"
         app:layout_constraintTop_toBottomOf="@id/artistName"/>
-<EditText
-        android:id="@+id/genre"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@={albumData.genre}"
-        android:hint="Genre"
-        app:layout_constraintTop_toBottomOf="@id/releaseDate"/>
+
+    <Spinner
+            android:id="@+id/genreSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Genre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/releaseDate"/>
 <EditText
         android:id="@+id/priceInPence"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@={albumData.priceInPence}"
         android:hint="Price (in Pence)"
-        app:layout_constraintTop_toBottomOf="@id/genre"/>
+        app:layout_constraintTop_toBottomOf="@id/genreSpinner"/>
     <Button
             android:id="@+id/addButton"
             android:text="Add Album"
@@ -78,6 +79,7 @@
             app:layout_constraintTop_toBottomOf="@id/addButton"
             app:layout_constraintStart_toStartOf="parent"
             android:onClick="@{clickHandlers::backButtonClicked}"/>
+
 
     <!--    spinners for release date, genre and number entry for price-->
 

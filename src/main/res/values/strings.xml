@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">RecordStoreApp</string>
+    <string-array name="genres">
+        <item>Genre</item>
+        <item>ROCK</item>
+        <item>POP</item>
+        <item>COUNTRY</item>
+        <item>JAZZ</item>
+        <item>CLASSICAL</item>
+        <item>DANCE</item>
+        <item>SOUL</item>
+    </string-array>
 </resources>

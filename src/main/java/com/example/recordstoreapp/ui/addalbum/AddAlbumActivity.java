@@ -1,5 +1,7 @@
 package com.example.recordstoreapp.ui.addalbum;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
@@ -26,15 +28,20 @@ public class AddAlbumActivity extends AppCompatActivity {
 
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-
-
         AlbumToAdd albumToAdd = new AlbumToAdd();
         activityAddAlbumBinding.setAlbumData(albumToAdd);
-
 
         addAlbumClickHandlers = new AddAlbumClickHandlers(albumToAdd, this, mainActivityViewModel);
         activityAddAlbumBinding.setClickHandlers(addAlbumClickHandlers);
 
+        Spinner spinner = (Spinner) findViewById(R.id.genreSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.genres,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
 
 
