@@ -19,8 +19,8 @@
             android:id="@+id/titleCard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Add New Album"
-            android:textSize="24dp"
+            android:text="@string/add_new"
+            android:textSize="24sp"
             android:textAlignment="center"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -30,28 +30,34 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@={albumData.albumName}"
-        android:hint="Album Name"
+        android:autofillHints="none"
+        android:inputType="text"
+        android:hint="@string/album_name"
         app:layout_constraintTop_toBottomOf="@id/titleCard"/>
 <EditText
         android:id="@+id/artistName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@={albumData.artistName}"
-        android:hint="Artist Name"
+        android:autofillHints="none"
+        android:inputType="text"
+        android:hint="@string/artist_name"
         app:layout_constraintTop_toBottomOf="@id/albumName"/>
 <EditText
         android:id="@+id/releaseDate"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@={albumData.releaseDate}"
-        android:hint="Release Date (yyyy-mm-dd)"
+        android:autofillHints="none"
+        android:inputType="date"
+        android:hint="@string/release_date"
         app:layout_constraintTop_toBottomOf="@id/artistName"/>
 
     <Spinner
             android:id="@+id/genreSpinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Genre"
+            android:hint="@string/genre"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/releaseDate"/>
 <EditText
@@ -59,11 +65,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@={albumData.priceInPence}"
-        android:hint="Price (in Pence)"
+        android:inputType="number"
+        android:hint="@string/price"
         app:layout_constraintTop_toBottomOf="@id/genreSpinner"/>
     <Button
             android:id="@+id/addButton"
-            android:text="Add Album"
+            android:text="@string/add_new_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
