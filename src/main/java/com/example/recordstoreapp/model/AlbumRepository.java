@@ -2,6 +2,7 @@ package com.example.recordstoreapp.model;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import com.example.recordstoreapp.service.AlbumApiService;
 import com.example.recordstoreapp.service.RetrofitInstance;
@@ -48,12 +49,15 @@ public class AlbumRepository {
 
             @Override
             public void onResponse(Call<Album> call, Response<Album> response) {
+                Toast toast = Toast.makeText(application.getApplicationContext(), "Album added", Toast.LENGTH_SHORT);
+                toast.show();;
 
             }
 
             @Override
             public void onFailure(Call<Album> call, Throwable throwable) {
-
+                Toast toast = Toast.makeText(application.getApplicationContext(), "Action Failed", Toast.LENGTH_SHORT);
+                toast.show();;
             }
         });
     }
