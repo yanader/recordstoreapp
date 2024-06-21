@@ -6,6 +6,7 @@
 
     <data>
         <variable name="albumData" type="com.example.recordstoreapp.model.AlbumToAdd"/>
+        <variable name="clickHandlers" type="com.example.recordstoreapp.ui.addalbum.AddAlbumClickHandlers"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -64,8 +65,10 @@
             android:text="Add Album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintTop_toBottomOf="@id/priceInPence"/>
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/priceInPence"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{clickHandlers::createAlbumClicked}"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/backButton"
             android:layout_width="50dp"
@@ -73,7 +76,8 @@
             android:layout_marginTop="20dp"
             android:src="@android:drawable/ic_menu_revert"
             app:layout_constraintTop_toBottomOf="@id/addButton"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{clickHandlers::backButtonClicked}"/>
 
     <!--    spinners for release date, genre and number entry for price-->
 
