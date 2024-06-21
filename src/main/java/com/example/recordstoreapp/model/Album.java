@@ -81,4 +81,6 @@ public class Album extends BaseObservable {
         this.releaseDate = releaseDate;
         notifyPropertyChanged(BR.releaseDate);
     }
+
+
 }

@@ -7,7 +7,7 @@ public class RetrofitInstance {
 
     private static Retrofit retrofit = null;
 //    private static final String BASE_URL = "http://recordstore-env.eba-5pxaf46f.eu-west-2.elasticbeanstalk.com/";
-    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/api/v1/recordstore/";
 
     public static AlbumApiService getService() {
         if (retrofit == null) {
