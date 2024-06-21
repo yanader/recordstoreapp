@@ -28,6 +28,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     @Override
     public AlbumViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup viewGroup, int i) {
         AlbumItemBinding albumItemBinding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.album_item, viewGroup, false);
+//        AlbumItemBinding albumItemBinding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.album_card, viewGroup, false);
         return new AlbumViewHolder(albumItemBinding);
     }
 
