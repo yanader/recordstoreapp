@@ -42,20 +42,20 @@ public class AlbumRepository {
         return mutableLiveData;
     }
 
-    public void addNewAlbum(Album albumToAdd) {
+    public void addNewAlbum(AlbumToAdd albumToAdd) {
         AlbumApiService albumApiService = RetrofitInstance.getService();
-        Call<Album> albumCall = albumApiService.addNewAlbum(albumToAdd);
-        albumCall.enqueue(new Callback<Album>() {
+        Call<AlbumToAdd> albumCall = albumApiService.addNewAlbum(albumToAdd);
+        albumCall.enqueue(new Callback<AlbumToAdd>() {
 
             @Override
-            public void onResponse(Call<Album> call, Response<Album> response) {
+            public void onResponse(Call<AlbumToAdd> call, Response<AlbumToAdd> response) {
                 Toast toast = Toast.makeText(application.getApplicationContext(), "Album added", Toast.LENGTH_SHORT);
                 toast.show();;
 
             }
 
             @Override
-            public void onFailure(Call<Album> call, Throwable throwable) {
+            public void onFailure(Call<AlbumToAdd> call, Throwable throwable) {
                 Toast toast = Toast.makeText(application.getApplicationContext(), "Action Failed", Toast.LENGTH_SHORT);
                 toast.show();;
             }

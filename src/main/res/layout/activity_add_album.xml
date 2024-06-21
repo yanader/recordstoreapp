@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="albumData" type="com.example.recordstoreapp.model.Album"/>
+        <variable name="albumData" type="com.example.recordstoreapp.model.AlbumToAdd"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -20,7 +20,8 @@
             android:layout_height="50dp"
             android:text="Add New Album"
             android:textAlignment="center"
-            android:gravity="center"/>
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 <EditText
         android:id="@+id/albumName"
@@ -50,10 +51,24 @@
         android:text="@={albumData.genre}"
         android:hint="Genre"
         app:layout_constraintTop_toBottomOf="@id/releaseDate"/>
+<EditText
+        android:id="@+id/priceInPence"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@={albumData.priceInPence}"
+        android:hint="Price (in Pence)"
+        app:layout_constraintTop_toBottomOf="@id/genre"/>
 
-<!--<EditText-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"/>-->
+<!--    spinners for release date, genre and number entry for price-->
+
+<!--    <Spinner-->
+<!--            android:id="@+id/spinner1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@android:drawable/btn_dropdown"-->
+<!--            android:spinnerMode="dropdown"/>-->
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,9 +16,9 @@ public class AlbumToAdd extends BaseObservable {
     @SerializedName("releaseDate")
     String releaseDate;
     @SerializedName("priceInPence")
-    int priceInPence;
+    String priceInPence;
 
-    public AlbumToAdd(String albumName, String artistName, String genre, String releaseDate, int priceInPence) {
+    public AlbumToAdd(String albumName, String artistName, String genre, String releaseDate, String priceInPence) {
         this.albumName = albumName;
         this.artistName = artistName;
         this.genre = genre;
@@ -50,7 +50,7 @@ public class AlbumToAdd extends BaseObservable {
     }
 
     @Bindable
-    public int getPriceInPence() {
+    public String getPriceInPence() {
         return priceInPence;
     }
 
@@ -74,7 +74,7 @@ public class AlbumToAdd extends BaseObservable {
         notifyPropertyChanged(BR.releaseDate);
     }
 
-    public void setPriceInPence(int priceInPence) {
+    public void setPriceInPence(String priceInPence) {
         this.priceInPence = priceInPence;
         notifyPropertyChanged(BR.priceInPence);
     }

@@ -1,6 +1,7 @@
 package com.example.recordstoreapp.service;
 
 import com.example.recordstoreapp.model.Album;
+import com.example.recordstoreapp.model.AlbumToAdd;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -14,5 +15,5 @@ public interface AlbumApiService {
     Call<List<Album>> getAllAlbums();
 
     @POST("albums/add")
-    Call<Album> addNewAlbum(@Body Album album);
+    Call<AlbumToAdd> addNewAlbum(@Body AlbumToAdd album);
 }
