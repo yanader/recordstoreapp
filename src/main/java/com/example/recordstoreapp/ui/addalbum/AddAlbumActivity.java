@@ -1,14 +1,12 @@
 package com.example.recordstoreapp.ui.addalbum;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.recordstoreapp.R;
 import com.example.recordstoreapp.databinding.ActivityAddAlbumBinding;
-import com.example.recordstoreapp.model.AlbumToAdd;
+import com.example.recordstoreapp.model.AlbumStockItem;
 import com.example.recordstoreapp.ui.mainactivity.MainActivityViewModel;
 
 public class AddAlbumActivity extends AppCompatActivity {
@@ -28,20 +26,11 @@ public class AddAlbumActivity extends AppCompatActivity {
 
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-        AlbumToAdd albumToAdd = new AlbumToAdd();
-        activityAddAlbumBinding.setAlbumData(albumToAdd);
+        AlbumStockItem albumStockItem = new AlbumStockItem();
+        activityAddAlbumBinding.setAlbumData(albumStockItem);
 
-        addAlbumClickHandlers = new AddAlbumClickHandlers(albumToAdd, this, mainActivityViewModel);
+        addAlbumClickHandlers = new AddAlbumClickHandlers(albumStockItem, this, mainActivityViewModel);
         activityAddAlbumBinding.setClickHandlers(addAlbumClickHandlers);
-
-//        Spinner spinner = (Spinner) findViewById(R.id.genreSpinner);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-//                this,
-//                R.array.genres,
-//                android.R.layout.simple_spinner_item
-//        );
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
 
 
 

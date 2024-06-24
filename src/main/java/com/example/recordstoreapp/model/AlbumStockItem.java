@@ -5,7 +5,7 @@ import androidx.databinding.Bindable;
 import com.example.recordstoreapp.BR;
 import com.google.gson.annotations.SerializedName;
 
-public class AlbumToAdd extends BaseObservable {
+public class AlbumStockItem extends BaseObservable {
 
     @SerializedName("albumName")
     String albumName;
@@ -18,7 +18,7 @@ public class AlbumToAdd extends BaseObservable {
     @SerializedName("priceInPence")
     String priceInPence;
 
-    public AlbumToAdd(String albumName, String artistName, String genre, String releaseDate, String priceInPence) {
+    public AlbumStockItem(String albumName, String artistName, String genre, String releaseDate, String priceInPence) {
         this.albumName = albumName;
         this.artistName = artistName;
         this.genre = genre;
@@ -26,7 +26,7 @@ public class AlbumToAdd extends BaseObservable {
         this.priceInPence = priceInPence;
     }
 
-    public AlbumToAdd() {
+    public AlbumStockItem() {
     }
 
     @Bindable
