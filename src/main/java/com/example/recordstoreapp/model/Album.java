@@ -1,5 +1,8 @@
 package com.example.recordstoreapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import com.example.recordstoreapp.BR;
@@ -7,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
 
     @SerializedName("albumId")
     long albumId;
@@ -31,6 +34,26 @@ public class Album extends BaseObservable {
 
     public Album() {
     }
+
+    protected Album(Parcel in) {
+        albumId = in.readLong();
+        albumName = in.readString();
+        artistName = in.readString();
+        genre = in.readString();
+        releaseDate = in.readString();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 
     @Bindable
     public long getAlbumId() {
@@ -82,5 +105,17 @@ public class Album extends BaseObservable {
         notifyPropertyChanged(BR.releaseDate);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(albumId);
+        dest.writeString(albumName);
+        dest.writeString(artistName);
+        dest.writeString(genre);
+        dest.writeString(releaseDate);
+    }
 }

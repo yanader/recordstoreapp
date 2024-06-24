@@ -15,7 +15,7 @@ import com.example.recordstoreapp.model.Album;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private RecyclerView recyclerView;
     private ArrayList<Album> albumList;
@@ -53,11 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayInRecyclerView() {
         recyclerView = activityMainBinding.recyclerView;
-        albumAdapter = new AlbumAdapter(albumList, this);
+        albumAdapter = new AlbumAdapter(albumList, this, this);
         recyclerView.setAdapter(albumAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         albumAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }
