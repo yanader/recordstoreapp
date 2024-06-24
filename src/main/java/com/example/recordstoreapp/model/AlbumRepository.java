@@ -27,16 +27,11 @@ public class AlbumRepository {
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 List<Album> albumList = response.body();
-                Log.i("albumListLog", ""+response.code());
-                Log.i("albumListLog", albumList.toString());
-                Log.i("albumListLog", "ON SUCCESS");
                 mutableLiveData.setValue(albumList);
             }
 
             @Override
             public void onFailure(Call<List<Album>> call, Throwable throwable) {
-                Log.i("albumListLog", "ON FAILURE");
-                Log.i("albumListLog", throwable.getMessage());
             }
         });
         return mutableLiveData;
@@ -92,5 +87,24 @@ public class AlbumRepository {
                 Toast.makeText(application.getApplicationContext(), "Delete failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public AlbumStockItem getAlbumStockById(long id) {
+        final AlbumStockItem[] albumStockItem = new AlbumStockItem[1];
+        AlbumApiService albumApiService = RetrofitInstance.getService();
+        Call<AlbumStockItem> albumStockCall = albumApiService.getAlbumById(id);
+
+        albumStockCall.enqueue(new Callback<AlbumStockItem>() {
+            @Override
+            public void onResponse(Call<AlbumStockItem> call, Response<AlbumStockItem> response) {
+                albumStockItem[0] = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<AlbumStockItem> call, Throwable throwable) {
+
+            }
+        });
+        return albumStockItem[0];
     }
 }

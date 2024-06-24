@@ -20,4 +20,7 @@ public interface AlbumApiService {
 
     @DELETE("albums/{id}")
     Call<Album> deleteAlbum(@Path("id") long id);
+
+    @GET("albums/{id}")
+    Call<AlbumStockItem> getAlbumById(@Path("id") long id);
 }

@@ -34,4 +34,8 @@ public class MainActivityViewModel extends AndroidViewModel {
     public void deleteAlbum(long id) {
         albumRepository.deleteAlbum(id);
     }
+
+    public AlbumStockItem getStockItemByID(long id) {
+        return albumRepository.getAlbumStockById(id);
+    }
 }

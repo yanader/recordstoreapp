@@ -5,9 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="albumData" type="com.example.recordstoreapp.model.AlbumStockItem"/>
-<!--        I think I will need something here that brings in the ID from the Album that was clicked-->
-<!--        Because the AlbumStockItem won't have the ID-->
+        <variable name="albumStockData" type="com.example.recordstoreapp.model.AlbumStockItem"/>
+        <variable name="clickHandlers" type="com.example.recordstoreapp.ui.updatealbum.UpdateAlbumClickHandlers"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +29,7 @@
                 android:id="@+id/albumName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumData.albumName}"
+                android:text="@={albumStockData.albumName}"
                 android:autofillHints="none"
                 android:inputType="text"
                 android:hint="@string/album_name"
@@ -39,7 +38,7 @@
                 android:id="@+id/artistName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumData.artistName}"
+                android:text="@={albumStockData.artistName}"
                 android:autofillHints="none"
                 android:inputType="text"
                 android:hint="@string/artist_name"
@@ -48,7 +47,7 @@
                 android:id="@+id/releaseDate"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumData.releaseDate}"
+                android:text="@={albumStockData.releaseDate}"
                 android:autofillHints="none"
                 android:inputType="date"
                 android:hint="@string/release_date"
@@ -58,7 +57,7 @@
                 android:id="@+id/genre"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumData.genre}"
+                android:text="@={albumStockData.genre}"
                 android:inputType="text"
                 android:hint="Genre"
                 app:layout_constraintTop_toBottomOf="@id/releaseDate"/>
@@ -66,7 +65,7 @@
                 android:id="@+id/priceInPence"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumData.priceInPence}"
+                android:text="@={albumStockData.priceInPence}"
                 android:inputType="number"
                 android:hint="@string/price"
                 app:layout_constraintTop_toBottomOf="@id/genre"/>

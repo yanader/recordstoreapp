@@ -17,7 +17,6 @@ public class MainActivityClickHandler {
     }
 
     public void goToAddNewAlbum(View view) {
-        Log.i("ButtonLogger", "We're in here");
         Intent intent = new Intent(context, AddAlbumActivity.class);
         context.startActivity(intent);
 

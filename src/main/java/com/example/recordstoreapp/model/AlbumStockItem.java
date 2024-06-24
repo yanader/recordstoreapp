@@ -1,11 +1,14 @@
 package com.example.recordstoreapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import com.example.recordstoreapp.BR;
 import com.google.gson.annotations.SerializedName;
 
-public class AlbumStockItem extends BaseObservable {
+public class AlbumStockItem extends BaseObservable implements Parcelable {
 
     @SerializedName("albumName")
     String albumName;
@@ -28,6 +31,26 @@ public class AlbumStockItem extends BaseObservable {
 
     public AlbumStockItem() {
     }
+
+    protected AlbumStockItem(Parcel in) {
+        albumName = in.readString();
+        artistName = in.readString();
+        genre = in.readString();
+        releaseDate = in.readString();
+        priceInPence = in.readString();
+    }
+
+    public static final Creator<AlbumStockItem> CREATOR = new Creator<AlbumStockItem>() {
+        @Override
+        public AlbumStockItem createFromParcel(Parcel in) {
+            return new AlbumStockItem(in);
+        }
+
+        @Override
+        public AlbumStockItem[] newArray(int size) {
+            return new AlbumStockItem[size];
+        }
+    };
 
     @Bindable
     public String getAlbumName() {
@@ -77,5 +100,19 @@ public class AlbumStockItem extends BaseObservable {
     public void setPriceInPence(String priceInPence) {
         this.priceInPence = priceInPence;
         notifyPropertyChanged(BR.priceInPence);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(albumName);
+        dest.writeString(artistName);
+        dest.writeString(genre);
+        dest.writeString(releaseDate);
+        dest.writeString(priceInPence);
     }
 }
