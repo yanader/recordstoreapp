@@ -4,39 +4,39 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
-import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumStockItem;
+import com.example.recordstoreapp.model.UpdateAlbumItem;
 import com.example.recordstoreapp.ui.mainactivity.MainActivity;
 import com.example.recordstoreapp.ui.mainactivity.MainActivityViewModel;
 
 public class UpdateAlbumClickHandlers {
-    AlbumStockItem albumStockItem;
+    UpdateAlbumItem updateAlbumItem;
     MainActivityViewModel mainActivityViewModel;
     long albumId;
     Context context;
 
-    public UpdateAlbumClickHandlers(AlbumStockItem albumStockItem, MainActivityViewModel mainActivityViewModel, Context context) {
-        this.albumStockItem = albumStockItem;
+    public UpdateAlbumClickHandlers(UpdateAlbumItem updateAlbumItem, MainActivityViewModel mainActivityViewModel, Context context, long id) {
+        this.updateAlbumItem = updateAlbumItem;
         this.mainActivityViewModel = mainActivityViewModel;
         this.context = context;
-        albumId = 1L;
+        albumId = id;
     }
 
     public void submitUpdatedAlbum(View view) {
-        if (albumStockItem.getAlbumName() == null ||
-                albumStockItem.getArtistName() == null ||
-                albumStockItem.getGenre() == null ||
-                albumStockItem.getPriceInPence() == null ||
-                albumStockItem.getReleaseDate() == null) {
+        if (updateAlbumItem.getAlbumName() == null ||
+                updateAlbumItem.getArtistName() == null ||
+                updateAlbumItem.getGenre() == null ||
+                updateAlbumItem.getPriceInPence() == null ||
+                updateAlbumItem.getReleaseDate() == null) {
             Toast toast = Toast.makeText(context, "Fields can not be empty", Toast.LENGTH_SHORT);
             toast.show();
         } else {
             AlbumStockItem updatedAlbum = new AlbumStockItem(
-                    albumStockItem.getAlbumName(),
-                    albumStockItem.getArtistName(),
-                    albumStockItem.getGenre(),
-                    albumStockItem.getReleaseDate(),
-                    albumStockItem.getPriceInPence()
+                    updateAlbumItem.getAlbumName(),
+                    updateAlbumItem.getArtistName(),
+                    updateAlbumItem.getGenre(),
+                    updateAlbumItem.getReleaseDate(),
+                    updateAlbumItem.getPriceInPence()
             );
             mainActivityViewModel.updateAlbum(updatedAlbum, albumId);
 

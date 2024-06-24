@@ -14,6 +14,7 @@ import java.util.List;
 
 public class AlbumRepository {
     private MutableLiveData<List<Album>> mutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<GetByIdAlbum> mutableLiveStockItem = new MutableLiveData<>();
     private Application application;
 
     public AlbumRepository(Application application) {
@@ -59,15 +60,15 @@ public class AlbumRepository {
 
     public void updateAlbum(AlbumStockItem albumStockItem, long id) {
         AlbumApiService albumApiService = RetrofitInstance.getService();
-        Call<AlbumStockItem> albumCall = albumApiService.updateAlbum(albumStockItem, id);
-        albumCall.enqueue(new Callback<AlbumStockItem>() {
+        Call<UpdateAlbumItem> albumCall = albumApiService.updateAlbum(albumStockItem, id);
+        albumCall.enqueue(new Callback<UpdateAlbumItem>() {
             @Override
-            public void onResponse(Call<AlbumStockItem> call, Response<AlbumStockItem> response) {
+            public void onResponse(Call<UpdateAlbumItem> call, Response<UpdateAlbumItem> response) {
                 Toast.makeText(application.getApplicationContext(), "Album updated", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<AlbumStockItem> call, Throwable throwable) {
+            public void onFailure(Call<UpdateAlbumItem> call, Throwable throwable) {
                 Toast.makeText(application.getApplicationContext(), "Update failed", Toast.LENGTH_SHORT).show();
             }
         });
@@ -89,22 +90,20 @@ public class AlbumRepository {
         });
     }
 
-    public AlbumStockItem getAlbumStockById(long id) {
-        final AlbumStockItem[] albumStockItem = new AlbumStockItem[1];
+    public MutableLiveData<GetByIdAlbum> getAlbumStockById(long id) {
         AlbumApiService albumApiService = RetrofitInstance.getService();
-        Call<AlbumStockItem> albumStockCall = albumApiService.getAlbumById(id);
+        Call<GetByIdAlbum> albumStockCall = albumApiService.getAlbumById(id);
 
-        albumStockCall.enqueue(new Callback<AlbumStockItem>() {
+        albumStockCall.enqueue(new Callback<GetByIdAlbum>() {
             @Override
-            public void onResponse(Call<AlbumStockItem> call, Response<AlbumStockItem> response) {
-                albumStockItem[0] = response.body();
+            public void onResponse(Call<GetByIdAlbum> call, Response<GetByIdAlbum> response) {
+                mutableLiveStockItem.setValue(response.body());
             }
-
             @Override
-            public void onFailure(Call<AlbumStockItem> call, Throwable throwable) {
-
+            public void onFailure(Call<GetByIdAlbum> call, Throwable throwable) {
             }
         });
-        return albumStockItem[0];
+
+        return mutableLiveStockItem;
     }
 }

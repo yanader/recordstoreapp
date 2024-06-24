@@ -8,12 +8,8 @@ import androidx.databinding.Bindable;
 import com.example.recordstoreapp.BR;
 import com.google.gson.annotations.SerializedName;
 
+public class UpdateAlbumItem extends BaseObservable implements Parcelable {
 
-
-public class Album extends BaseObservable implements Parcelable {
-
-    @SerializedName("albumId")
-    long albumId;
     @SerializedName("albumName")
     String albumName;
     @SerializedName("artistName")
@@ -22,43 +18,40 @@ public class Album extends BaseObservable implements Parcelable {
     String genre;
     @SerializedName("releaseDate")
     String releaseDate;
+    @SerializedName("priceInPence")
+    String priceInPence;
 
-
-    public Album(long albumId, String albumName, String artistName, String genre, String releaseDate) {
-        this.albumId = albumId;
+    public UpdateAlbumItem(String albumName, String artistName, String genre, String releaseDate, String priceInPence) {
         this.albumName = albumName;
         this.artistName = artistName;
         this.genre = genre;
         this.releaseDate = releaseDate;
+        this.priceInPence = priceInPence;
     }
 
-    public Album() {
+    public UpdateAlbumItem() {
     }
 
-    protected Album(Parcel in) {
-        albumId = in.readLong();
+    protected UpdateAlbumItem(Parcel in){
         albumName = in.readString();
         artistName = in.readString();
         genre = in.readString();
         releaseDate = in.readString();
+        priceInPence = in.readString();
     }
 
-    public static final Creator<Album> CREATOR = new Creator<Album>() {
+
+    public static final Creator<UpdateAlbumItem> CREATOR = new Creator<UpdateAlbumItem>() {
         @Override
-        public Album createFromParcel(Parcel in) {
-            return new Album(in);
+        public UpdateAlbumItem createFromParcel(Parcel in) {
+            return new UpdateAlbumItem(in);
         }
 
         @Override
-        public Album[] newArray(int size) {
-            return new Album[size];
+        public UpdateAlbumItem[] newArray(int size) {
+            return new UpdateAlbumItem[size];
         }
     };
-
-    @Bindable
-    public long getAlbumId() {
-        return albumId;
-    }
 
     @Bindable
     public String getAlbumName() {
@@ -80,9 +73,9 @@ public class Album extends BaseObservable implements Parcelable {
         return releaseDate;
     }
 
-    public void setAlbumId(long albumId) {
-        this.albumId = albumId;
-        notifyPropertyChanged(BR.albumId);
+    @Bindable
+    public String getPriceInPence() {
+        return priceInPence;
     }
 
     public void setAlbumName(String albumName) {
@@ -105,6 +98,11 @@ public class Album extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.releaseDate);
     }
 
+    public void setPriceInPence(String priceInPence) {
+        this.priceInPence = priceInPence;
+        notifyPropertyChanged(BR.priceInPence);
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -112,17 +110,17 @@ public class Album extends BaseObservable implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeLong(albumId);
         dest.writeString(albumName);
         dest.writeString(artistName);
         dest.writeString(genre);
         dest.writeString(releaseDate);
+        dest.writeString(priceInPence);
     }
 
     @Override
     public String toString() {
-        return "Album:\n" +
+        return "UpdateAlbumItem:\n" +
                 this.albumName + " | " + this.artistName + " | " +
-                this.genre + " | " + this.releaseDate + " | " + this.getAlbumId();
+                this.genre + " | " + this.releaseDate + " | " + this.priceInPence;
     }
 }

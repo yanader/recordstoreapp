@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumRepository;
 import com.example.recordstoreapp.model.AlbumStockItem;
+import com.example.recordstoreapp.model.GetByIdAlbum;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<Album>> getData() {
+
         return albumRepository.getMutableLiveData();
     }
 
@@ -35,7 +37,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         albumRepository.deleteAlbum(id);
     }
 
-    public AlbumStockItem getStockItemByID(long id) {
+    public MutableLiveData<GetByIdAlbum> getStockItemByID(long id) {
         return albumRepository.getAlbumStockById(id);
     }
 }

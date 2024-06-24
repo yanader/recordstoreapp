@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="albumStockData" type="com.example.recordstoreapp.model.AlbumStockItem"/>
+        <variable name="updateAlbumItem" type="com.example.recordstoreapp.model.UpdateAlbumItem"/>
         <variable name="clickHandlers" type="com.example.recordstoreapp.ui.updatealbum.UpdateAlbumClickHandlers"/>
     </data>
 
@@ -29,7 +29,7 @@
                 android:id="@+id/albumName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumStockData.albumName}"
+                android:text="@={updateAlbumItem.albumName}"
                 android:autofillHints="none"
                 android:inputType="text"
                 android:hint="@string/album_name"
@@ -38,7 +38,7 @@
                 android:id="@+id/artistName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumStockData.artistName}"
+                android:text="@={updateAlbumItem.artistName}"
                 android:autofillHints="none"
                 android:inputType="text"
                 android:hint="@string/artist_name"
@@ -47,9 +47,9 @@
                 android:id="@+id/releaseDate"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumStockData.releaseDate}"
+                android:text="@={updateAlbumItem.releaseDate}"
                 android:autofillHints="none"
-                android:inputType="date"
+
                 android:hint="@string/release_date"
                 app:layout_constraintTop_toBottomOf="@id/artistName"/>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/genre"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumStockData.genre}"
+                android:text="@={updateAlbumItem.genre}"
                 android:inputType="text"
                 android:hint="Genre"
                 app:layout_constraintTop_toBottomOf="@id/releaseDate"/>
@@ -65,8 +65,8 @@
                 android:id="@+id/priceInPence"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@={albumStockData.priceInPence}"
-                android:inputType="number"
+                android:text="@={updateAlbumItem.priceInPence}"
+                android:inputType="text"
                 android:hint="@string/price"
                 app:layout_constraintTop_toBottomOf="@id/genre"/>
         <Button
@@ -76,9 +76,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/priceInPence"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintEnd_toStartOf="@+id/deleteButton"/>
-        <!--            android:onClick="@{clickHandlers::updateAlbumClicked}"/>-->
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                android:onClick="@{clickHandlers::submitUpdatedAlbum}"/>
         <Button
                 android:id="@+id/deleteButton"
                 android:text="@string/delete_button"
@@ -87,8 +88,8 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/priceInPence"
                 app:layout_constraintStart_toEndOf="@+id/updateButton"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"/>
-        <!--            android:onClick="@{clickHandlers::deleteAlbumClicked}"/>-->
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                android:onClick="@{clickHandlers::submitDeleteAlbum}"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/backButton"
                 android:layout_width="50dp"
@@ -96,8 +97,8 @@
                 android:layout_marginTop="20dp"
                 android:src="@android:drawable/ic_menu_revert"
                 app:layout_constraintTop_toBottomOf="@id/updateButton"
-                app:layout_constraintStart_toStartOf="parent"/>
-<!--                android:onClick="@{clickHandlers::backButtonClicked}"/>-->
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{clickHandlers::backButtonClicked}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

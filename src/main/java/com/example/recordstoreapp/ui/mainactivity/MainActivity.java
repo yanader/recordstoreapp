@@ -13,6 +13,8 @@ import com.example.recordstoreapp.R;
 import com.example.recordstoreapp.databinding.ActivityMainBinding;
 import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumStockItem;
+import com.example.recordstoreapp.model.GetByIdAlbum;
+import com.example.recordstoreapp.model.UpdateAlbumItem;
 import com.example.recordstoreapp.ui.updatealbum.UpdateAlbumActivity;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     private RecyclerView recyclerView;
     private ArrayList<Album> albumList;
+    private AlbumStockItem albumStockItem;
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
@@ -66,11 +69,26 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(this, UpdateAlbumActivity.class);
-        long id = albumList.get(position).getAlbumId();
-        AlbumStockItem albumStockItem = mainActivityViewModel.getStockItemByID(id);
-        intent.putExtra("AlbumStock", albumStockItem);
-        intent.putExtra("id", id);
-        startActivity(intent);
+
+        Album album = albumList.get(position);
+        long id = album.getAlbumId();
+
+        mainActivityViewModel.getStockItemByID(id).observe(this, new Observer<GetByIdAlbum>() {
+            @Override
+            public void onChanged(GetByIdAlbum getByIdAlbum) {
+
+
+
+                Intent intent = new Intent(MainActivity.this, UpdateAlbumActivity.class);
+                intent.putExtra("AlbumStock", getByIdAlbum);
+                intent.putExtra("Album", album);
+                intent.putExtra("id", id);
+                Log.i("positionCheck", "we're here");
+                startActivity(intent);
+                Log.i("positionCheck", "we're here");
+                }
+            });
+
+
     }
 }

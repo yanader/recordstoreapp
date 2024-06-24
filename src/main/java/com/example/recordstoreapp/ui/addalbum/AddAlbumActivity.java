@@ -16,7 +16,6 @@ public class AddAlbumActivity extends AppCompatActivity {
     private AddAlbumClickHandlers addAlbumClickHandlers;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

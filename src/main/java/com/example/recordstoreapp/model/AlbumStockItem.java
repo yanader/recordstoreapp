@@ -115,4 +115,11 @@ public class AlbumStockItem extends BaseObservable implements Parcelable {
         dest.writeString(releaseDate);
         dest.writeString(priceInPence);
     }
+
+    @Override
+    public String toString() {
+        return "AlbumStockItem:\n" +
+                this.albumName + " | " + this.artistName + " | " +
+                this.genre + " | " + this.releaseDate + " | " + this.priceInPence;
+    }
 }

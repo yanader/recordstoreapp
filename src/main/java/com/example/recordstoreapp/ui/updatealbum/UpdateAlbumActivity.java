@@ -11,13 +11,17 @@ import com.example.recordstoreapp.databinding.ActivityMainBinding;
 import com.example.recordstoreapp.databinding.ActivityUpdateAlbumBinding;
 import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumStockItem;
+import com.example.recordstoreapp.model.GetByIdAlbum;
+import com.example.recordstoreapp.model.UpdateAlbumItem;
 import com.example.recordstoreapp.ui.mainactivity.MainActivityViewModel;
 
 public class UpdateAlbumActivity extends AppCompatActivity {
 
     ActivityUpdateAlbumBinding activityUpdateAlbumBinding;
     UpdateAlbumClickHandlers updateAlbumClickHandlers;
-    AlbumStockItem albumStockItem;
+    GetByIdAlbum getByIdAlbum;
+    Album album;
+    UpdateAlbumItem updateAlbumItem;
     long id;
 
     @Override
@@ -25,17 +29,36 @@ public class UpdateAlbumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_album);
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            albumStockItem = this.getIntent().getParcelableExtra("AlbumStock", AlbumStockItem.class);
-            id = this.getIntent().getParcelableExtra("id", Long.class);
+            getByIdAlbum = this.getIntent().getParcelableExtra("AlbumStock", GetByIdAlbum.class);
+            album = this.getIntent().getParcelableExtra("Album", Album.class);
+
+            id = this.getIntent().getLongExtra("id", -1);
+
+
         }
 
-        activityUpdateAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_album);
         MainActivityViewModel mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        activityUpdateAlbumBinding.setAlbumStockData(albumStockItem);
+        activityUpdateAlbumBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_album);
 
-        updateAlbumClickHandlers = new UpdateAlbumClickHandlers(albumStockItem, mainActivityViewModel, this);
+        updateAlbumItem = albumConvertor(getByIdAlbum, album);
+        activityUpdateAlbumBinding.setUpdateAlbumItem(updateAlbumItem);
+
+        updateAlbumClickHandlers = new UpdateAlbumClickHandlers(updateAlbumItem, mainActivityViewModel, this, id);
         activityUpdateAlbumBinding.setClickHandlers(updateAlbumClickHandlers);
 
+    }
+
+    public UpdateAlbumItem albumConvertor(GetByIdAlbum getByIdAlbum, Album album) {
+        Log.i("albumLogging", album.toString());
+        Log.i("albumLogging", getByIdAlbum.toString());
+        return new UpdateAlbumItem(
+                getByIdAlbum.getAlbumName(),
+                getByIdAlbum.getArtistName(),
+                album.getGenre(),
+                album.getReleaseDate(),
+                getByIdAlbum.getPriceInPence()
+        );
     }
 }

@@ -2,6 +2,8 @@ package com.example.recordstoreapp.service;
 
 import com.example.recordstoreapp.model.Album;
 import com.example.recordstoreapp.model.AlbumStockItem;
+import com.example.recordstoreapp.model.GetByIdAlbum;
+import com.example.recordstoreapp.model.UpdateAlbumItem;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -16,11 +18,11 @@ public interface AlbumApiService {
     Call<AlbumStockItem> addNewAlbum(@Body AlbumStockItem album);
 
     @PUT("albums/{id}")
-    Call<AlbumStockItem> updateAlbum(@Body AlbumStockItem album, @Path("id") long id);
+    Call<UpdateAlbumItem> updateAlbum(@Body AlbumStockItem album, @Path("id") long id);
 
     @DELETE("albums/{id}")
     Call<Album> deleteAlbum(@Path("id") long id);
 
     @GET("albums/{id}")
-    Call<AlbumStockItem> getAlbumById(@Path("id") long id);
+    Call<GetByIdAlbum> getAlbumById(@Path("id") long id);
 }
