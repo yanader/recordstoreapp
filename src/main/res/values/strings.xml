@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">RecordStoreApp</string>
     <string name="add_new">Add New Album</string>
+    <string name="update_album_header">Update Album</string>
     <string name="add_new_button">Add Album</string>
+    <string name="update_button">Update Album</string>
+    <string name="delete_button">Delete Album</string>
     <string name="artist_name">Artist name</string>
     <string name="album_name">Album name</string>
     <string name="price">Price (in Pence)</string>
