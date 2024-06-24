@@ -34,14 +34,14 @@ public class AddAlbumActivity extends AppCompatActivity {
         addAlbumClickHandlers = new AddAlbumClickHandlers(albumToAdd, this, mainActivityViewModel);
         activityAddAlbumBinding.setClickHandlers(addAlbumClickHandlers);
 
-        Spinner spinner = (Spinner) findViewById(R.id.genreSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.genres,
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+//        Spinner spinner = (Spinner) findViewById(R.id.genreSpinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//                this,
+//                R.array.genres,
+//                android.R.layout.simple_spinner_item
+//        );
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
 
 
 

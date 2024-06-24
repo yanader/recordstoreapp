@@ -53,13 +53,21 @@
         android:hint="@string/release_date"
         app:layout_constraintTop_toBottomOf="@id/artistName"/>
 
-    <Spinner
-            android:id="@+id/genreSpinner"
+<!--    <Spinner-->
+<!--            android:id="@+id/genreSpinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:hint="@string/genre"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/releaseDate"/>-->
+    <EditText
+            android:id="@+id/genre"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/genre"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/releaseDate"/>
+            android:text="@={albumData.genre}"
+            android:inputType="text"
+            android:hint="Genre"
+            app:layout_constraintTop_toBottomOf="@id/releaseDate"/>
 <EditText
         android:id="@+id/priceInPence"
         android:layout_width="match_parent"
@@ -67,7 +75,7 @@
         android:text="@={albumData.priceInPence}"
         android:inputType="number"
         android:hint="@string/price"
-        app:layout_constraintTop_toBottomOf="@id/genreSpinner"/>
+        app:layout_constraintTop_toBottomOf="@id/genre"/>
     <Button
             android:id="@+id/addButton"
             android:text="@string/add_new_button"
