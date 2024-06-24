@@ -1,5 +1,6 @@
 package com.example.recordstoreapp.ui.mainactivity;
 
+import android.content.Intent;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recordstoreapp.R;
 import com.example.recordstoreapp.databinding.ActivityMainBinding;
 import com.example.recordstoreapp.model.Album;
+import com.example.recordstoreapp.ui.updatealbum.UpdateAlbumActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
-
+        Intent intent = new Intent(this, UpdateAlbumActivity.class);
+        intent.putExtra("Album", albumList.get(position));
+        startActivity(intent);
     }
 }
