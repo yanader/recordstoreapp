@@ -43,13 +43,9 @@ public class MainActivity extends AppCompatActivity {
         mainActivityViewModel.getData().observe(this, new Observer<List<Album>>() {
             @Override
             public void onChanged(List<Album> albumsFromLiveData) {
-                // albums refers to the variable name of your List of Album objects
-                // albumsFromLiveData is cast to this type
 
                 albumList = (ArrayList<Album>) albumsFromLiveData;
-//                Log.d("logOne", "NEW LOG");
-                Log.i("during", "we're inside here");
-                // This method will be created next
+
                 displayInRecyclerView();
             }
         });

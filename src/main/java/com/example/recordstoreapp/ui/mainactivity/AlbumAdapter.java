@@ -2,7 +2,6 @@ package com.example.recordstoreapp.ui.mainactivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -28,7 +27,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     @Override
     public AlbumViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup viewGroup, int i) {
         AlbumItemBinding albumItemBinding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.album_item, viewGroup, false);
-//        AlbumItemBinding albumItemBinding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.album_card, viewGroup, false);
+//        AlbumCardBinding albumCardBinding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.album_card, viewGroup, false);
         return new AlbumViewHolder(albumItemBinding);
     }
 
@@ -47,9 +46,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public static class AlbumViewHolder extends RecyclerView.ViewHolder {
         private AlbumItemBinding albumItemBinding;
 
-        public AlbumViewHolder(AlbumItemBinding albumItemBinding) {
-            super(albumItemBinding.getRoot());
-            this.albumItemBinding = albumItemBinding;
-        }
+            public AlbumViewHolder(AlbumItemBinding albumItemBinding) {
+                super(albumItemBinding.getRoot());
+                this.albumItemBinding = albumItemBinding;
+            }
+
+
     }
 }
+
