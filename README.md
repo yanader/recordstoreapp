@@ -2,13 +2,15 @@
 
 Android app for use with [recordstoreAPI](https://github.com/yanader/recordshopAPI)
 
-This Android app is a work in progress. Functionality to be built includes:
+This Android app is a work in progress. 
 
-1. GET album by ID
-2. DELETE album by ID
-3. PATCH/PUT requests
+### Functionality TODO
 
-### Other TODO
-1. Include DatePicker for date input
-2. Improve use of Spinner for genre input
-3. Clean up styling of all layouts/items
+1. Inputs
+   - date/number for releaseDate/price
+   - spinner/dropdown for genre
+2. Styling cleanup
+
+### Bug TODO
+
+1. Clicking on a Album while a filter is active takes the user to an incorrectly populated UpdateAlbumView
