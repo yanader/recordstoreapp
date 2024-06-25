@@ -105,6 +105,14 @@ public class Album extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.releaseDate);
     }
 
+    public boolean matchesArtistName(String search) {
+        return this.artistName.toLowerCase().contains(search);
+    }
+
+    public boolean matchesAlbumName(String search) {
+        return this.albumName.toLowerCase().contains(search);
+    }
+
     @Override
     public int describeContents() {
         return 0;

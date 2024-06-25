@@ -22,6 +22,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
 
     public AlbumAdapter(List<Album> albumList, Context context, RecyclerViewInterface recyclerViewInterface) {
         this.albumList = albumList;
+        this.context = context;
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
@@ -45,6 +46,10 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     }
 
 
+    public void setFilteredList(List<Album> filteredList) {
+        albumList = filteredList;
+    }
+
     public static class AlbumViewHolder extends RecyclerView.ViewHolder {
         private AlbumItemBinding albumItemBinding;
 
@@ -63,12 +68,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                         }
                     }
                 });
-
             }
-
-
-
-
     }
 }
 
